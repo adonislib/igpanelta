@@ -1,31 +1,57 @@
-# Adonis fullstack application
+# Instagram Personal Panel
+To manage instagram account.
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+1. Autopost Schedule
+2. Follow Followers Target (Cooming Soon)
+3. Delete All Media (Cooming Soon)
+4. Unfollow All not Followback (Cooming Soon)
+5. Unfollow All Following (Cooming Soon)
+6. Other ..
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+## Depedencies
+
+1. AdonisJS (http://adonisjs.com)
+2. Instagram Private Api (https://github.com/huttarichard/instagram-private-api)
 
 ## Setup
 
-Use the adonis command to install the blueprint
-
+Git Clone Script
 ```bash
+git clone https://github.com/ccocot/Instagram-personal-panel.git 
+cd Instagram-personal-panel
+npm install
 adonis new yardstick
 ```
 
-or manually clone the repo and then run `npm install`.
+Edit app/Commands/SetAdmin.js For Admin Login
+```javascript
+user.username = 'ccocot' // INSERT YOUR USERNAME
+user.email = 'ccocot@bc0de.net' // INSERT YOUR EMAIL
+user.password = 'ccocot123' // INSERT YOUR USERNAME
 
+```
+Setting mysql in .env
+```
+DB_CONNECTION=mysql
+DB_HOST=dbhost
+DB_PORT=dbport
+DB_USER=dbuser
+DB_PASSWORD=dbpassword
+DB_DATABASE=dbname
+```
 
-### Migrations
+Run Migration and create Admin
+```bash
+adonis run:migration
+adonis set:admin
+```
 
-Run the following command to run startup migrations.
+set env to production in .env
+```
+NODE_ENV=production
+```
 
-```js
-adonis migration:run
+And run the server
+```
+adonis serve
 ```

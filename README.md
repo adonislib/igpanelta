@@ -20,7 +20,6 @@ Git Clone Script
 git clone https://github.com/ccocot/Instagram-personal-panel.git 
 cd Instagram-personal-panel
 npm install
-adonis new yardstick
 ```
 
 Edit app/Commands/SetAdmin.js For Admin Login

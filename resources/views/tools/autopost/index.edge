@@ -1,0 +1,35 @@
+@layout('master')
+
+@section('content')
+
+  <div style="margin-bottom: 10px;">
+    <a href="{{route('AutopostAddView')}}">Add Post</a>
+  </div>
+  <div id="post-list">
+    @each(post in post.data)
+      <div id="list-{{post.id}}" style="border: 3px solid; margin-top: 5px;margin-bottom: 5px; padding:5px;">
+        [<form method="post" action="{{route('AutopostDelete')}}" style="display: inline;"><input type="hidden" name="id" value="{{post.id}}"><input type="submit" value="DELETE">{{csrfField()}}</form>]<br />
+        Post id: {{post.id}}<br />
+        Account id: {{post.account_id}}<br />
+        Caption: <font color="cyan">{{post.caption}}</font><br />
+        Pubsilh At: {{post.publish_time}}<br />
+        Published: 
+        @if(post.is_published)
+          <font color="lime">OK</font>
+        @else
+          <font color="yellow">Waiting</font>
+        @endif
+        <br />
+        Image:<br /><img width="350" height="250" src="/Autopost/{{post.image}}" />
+      </div>
+    @endeach
+  </div>
+  <div id="pagination" align="center">
+    Page: {{post.page}} <br />
+    @if(post.page == 1)
+      <a href="/tools/Autopost/{{post.page + 1}}">>></a> Next Page
+    @else
+      Prev Page <a href="/tools/Autopost/{{post.page - 1}}"><<</a> | <a href="/tools/Autopost/{{post.page + 1}}">>></a> Next Page
+    @endif
+  </div>
+@endsection

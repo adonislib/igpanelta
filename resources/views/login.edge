@@ -1,0 +1,22 @@
+@layout('master')
+
+@section('content')
+  <div id="form-login">
+    <h6 style="margin-bottom: 5px;">Login</h6>
+    <form method="post" action="{{route('Login')}}">
+      {{csrfField()}}
+      <input type="email" name="email" required placeholder="Email" />
+      <input type="password" name="password" required placeholder="Password" />
+      <input type="submit">
+    </form>
+    <h6>INSTAGRAM PERSONAL PANEL</h6>
+    <p><font color="cyan">Instagram Private Api (node module)</font> : https://github.com/huttarichard/instagram-private-api<br />
+      <font color="cyan">AdonisJs Framework</font> : http://adonisjs.com<br/ >
+      <font color="cyan">To get Scrip</font>t : https://github.com/ccocot/Instagram-personal-panel</p>
+    <p>Thank's to : Naonlah.net, Zerobyte.id, Bc0de.net, Lestravo, Sikuder</p>
+    <p style="color: yellow">CODE BY CCOCOT, ccocot@bc0de.net</p>
+    <p style="font-size:30px;font-family: 'Libre Barcode 39 Extended Text';">
+      BC0DE.NET
+    </p>
+  </div>
+@endsection

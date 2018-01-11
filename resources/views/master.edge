@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='//fonts.googleapis.com/css?family=Libre+Barcode+39+Extended+Text' rel='stylesheet' type='text/css'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  @section('header')
+    <title>Instagram Personal Panel - BC0DE.NET</title>
+  @endsection
+  {{css('normalize.css')}}
+  {{css('skeleton.css')}}
+  {{css('custom.css')}}
+</head>
+<body>
+  
+<div class="container" style="margin-top: 15px;margin-bottom: 20px;">
+  <h1 style="font-size: 30px;margin-bottom: 5px">BC0DE.NET</h1>
+  <h2 style="font-size: 15px">Instagram Personal Panel</h2>
+  @loggedIn
+    Hellow {{auth.user.username}}, Welcome back !<br />
+    <a href="/">Home</a> | <a href="{{route('Logout')}}" title="Logout">Logout</a>
+  @endloggedIn
+</div>
+
+<div class="container">
+  @if(old('notification'))
+    <font color="red">{{old('notification')}}</font>
+  @endif
+  @!section('content')
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+@layout('master')
+
+@section('content')
+
+  <div id="account-ig-form" >
+    <h6 style="margin-bottom: 5px;">Add Instagram account</h6>
+    <form method="post" action="{{route('addAccount')}}">
+      {{csrfField()}}
+      <input type="text" name="username" placeholder="Username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <input type="submit">
+    </form>
+  </div>
+
+  <div id="info">
+    <p>Untuk menghapus user, hapus dulu semua post yang telah di schedulkan untuk akun tersebut agar tidak terjadi error. Usahakan jika mengganti password lakukan checking ulang !. Untuk tools yang lain akan kami usahakan tambahkan di lain waktu.</p>
+    <p>Script ini gratis, jadi jangan di perjual belikan.Di bangun menggunakan adonisJs Framwork 4.0, Menggunakan Instgaram Private Api module [<a href="https://github.com/huttarichard/instagram-private-api">Instagram-Private-Api</a>]</p>
+    <p><font color="red">Script ini masih belum stabil, diharapkan digunakan untuk personal !</font></p>
+  </div>
+
+  <div id="instagram-tools" style="margin-bottom: 15px;">
+    <h6 style="margin-bottom: 5px;">Instagram Tools List</h6>
+    [-] <a href="{{route('AutopostIndex')}}">Autopost</a><br />
+    [-] <a href="#none">Unffolow not followback</a><br />
+    [-] <a href="#none">Unfollow all following</a><br />
+    [-] <a href="#none">Delete all media</a><br />
+  </div>
+
+  <div id="account-ig-list">
+    <h6 style="margin-bottom: 5px;">Instagram account list</h6>
+    @each(account in account.rows)
+      <div id="list-{{account.id}}">
+        {{account.id}}. USERNAME: <font color="yellow">{{account.username}}</font>, LAST CHECKED: <font color="yellow">{{account.created_at.toString()}}</font><br /> - [STATUS:
+        @if(account.isActive)
+          <b><font color="lime">OK</font></b>
+        @else
+          <b><font color="red">ERR</font></b>
+        @endif
+        ]
+        <form method="post" action="{{route('deleteAccount')}}" style="display: inline;" id="delete-account-{{account.id}}">
+          {{csrfField()}}
+          <input type="hidden" name="id" value="{{account.id}}">
+          [<a href="javascript:{}" onclick="document.getElementById('delete-account-{{account.id}}').submit(); return false;">DELETE</a>]
+        </form>
+        <form method="post" action="{{route('checkAccount')}}" style="display: inline;" id="check-account-{{account.id}}">{{csrfField()}}
+          <input type="hidden" name="id" value="{{account.id}}">
+          [<a href="javascript:{}" onclick="document.getElementById('check-account-{{account.id}}').submit(); return false;">CHECK</a>]
+        </form>
+        [<a href="javascript:{}" onclick="bukaPassword('{{account.id}}')">EDIT PASSWORD</a>]
+        <form style="display: none;margin-bottom: -7px" action="{{route('editAccount')}}" method="post" id="edit-account-{{account.id}}">
+          {{csrfField()}}
+          <input type="hidden" name="id" value="{{account.id}}" />
+          <input type="text" name="password">
+          <input type="submit">
+        </form>
+
+      </div>
+    @endeach
+  </div>
+  <script>
+    function bukaPassword(id){$('#edit-account-'+id).slideToggle('slow');}
+  </script>
+@endsection

@@ -60,6 +60,6 @@ const aliases = {
 | Here you store ace commands for your package
 |
 */
-const commands = ['App/Commands/SetAdmin]
+const commands = ['App/Commands/SetAdmin']
 
 module.exports = { providers, aceProviders, aliases, commands }

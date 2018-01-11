@@ -15,6 +15,12 @@ To manage instagram account.
 
 ## Setup
 
+Install Adonis Cli globaly via npm
+
+```bash
+sudo npm i -g @adonisjs/cli
+```
+
 Git Clone Script
 ```bash
 git clone https://github.com/ccocot/Instagram-personal-panel.git 

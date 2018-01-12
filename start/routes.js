@@ -12,7 +12,6 @@
 | http://adonisjs.com/guides/routing
 |
 */
-
 const Route = use('Route')
 
 Route

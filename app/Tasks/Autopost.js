@@ -21,7 +21,6 @@ class Autopost {
   async handle() {
     // Do stuff here
     // Supports `async/await`
-
     try {
       const nowTimestamp = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
       const post = await Database.table('autoposts').where('publish_time', nowTimestamp)

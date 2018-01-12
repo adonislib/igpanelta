@@ -16,39 +16,22 @@
 const Route = use('Route')
 
 Route
-  .get('/', 'IgAccountController.index')
+  .get('/', 'DashboardController.index')
   .middleware(['auth'])
+  .as('dashboard')
+
 Route
-  .post('/add', 'IgAccountController.add')
+  .post('/IG/:params?', 'InstagramAccountController.index')
   .middleware(['auth'])
-  .as('addAccount')
-Route
-  .post('/delete', 'IgAccountController.delete')
-  .middleware(['auth'])
-  .as('deleteAccount')
-Route
-  .post('/check', 'IgAccountController.check')
-  .middleware(['auth'])
-  .as('checkAccount')
-Route
-  .post('/edit', 'IgAccountController.edit')
-  .middleware(['auth'])
-  .as('editAccount')
+  .as('Instagram')
 
 Route
   .group(() => {
-    Route.get('/', 'AuthController.index')
-    Route.get('/logout', 'AuthController.logout').as('Logout')
-    Route.post('/', 'AuthController.login').as('Login')
-  })
-  .prefix('auth')
-
-Route
-  .group(() => {
-    Route.post('/Autopost/add', 'AutoPostController.add').as('AutopostAdd')
-    Route.post('/Autopost/delete', 'AutoPostController.delete').as('AutopostDelete')
-    Route.get('/Autopost/add', 'AutoPostController.addView').as('AutopostAddView')
-    Route.get('/Autopost/:page?', 'AutoPostController.index').as('AutopostIndex')
+    Route.route('/Autopost/:params?/:id?', 'ToolController.autoPost',['GET','POST']).as('Autopost')
   })
   .prefix('tools')
   .middleware(['auth'])
+
+Route
+  .route('/auth/:params?', 'AuthController.index', ['GET','POST'])
+  .as('Auth')

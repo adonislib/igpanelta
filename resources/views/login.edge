@@ -3,7 +3,7 @@
 @section('content')
   <div id="form-login">
     <h6 style="margin-bottom: 5px;">Login</h6>
-    <form method="post" action="{{route('Login')}}">
+    <form method="post" action="{{route('Auth')}}">
       {{csrfField()}}
       <input type="email" name="email" required placeholder="Email" />
       <input type="password" name="password" required placeholder="Password" />

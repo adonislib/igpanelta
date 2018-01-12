@@ -3,12 +3,13 @@
 @section('content')
 
   <div style="margin-bottom: 10px;">
-    <a href="{{route('AutopostAddView')}}">Add Post</a>
+    <a href="{{route('Autopost' ,{params:'add'})}}">Add Post</a>
   </div>
   <div id="post-list">
     @each(post in post.data)
       <div id="list-{{post.id}}" style="border: 3px solid; margin-top: 5px;margin-bottom: 5px; padding:5px;">
-        [<form method="post" action="{{route('AutopostDelete')}}" style="display: inline;"><input type="hidden" name="id" value="{{post.id}}"><input type="submit" value="DELETE">{{csrfField()}}</form>]<br />
+        [<form method="post" action="{{route('Autopost', {params:'delete'})}}" style="display: inline;"><input type="hidden" name="id" value="{{post.id}}"><input type="submit" value="DELETE">{{csrfField()}}</form>] [<a href="
+        {{route( 'Autopost', {params:'edit', id:post.id} )}}" class="button">EDIT</a>]<br />
         Post id: {{post.id}}<br />
         Account id: {{post.account_id}}<br />
         Caption: <font color="cyan">{{post.caption}}</font><br />
@@ -25,11 +26,11 @@
     @endeach
   </div>
   <div id="pagination" align="center">
-    Page: {{post.page}} <br />
-    @if(post.page == 1)
+    Page: {{post.page}} | Last Page : {{post.lastPage}}<br />
+    @if(post.page <= post.lastPage)
       <a href="/tools/Autopost/{{post.page + 1}}">>></a> Next Page
     @else
-      Prev Page <a href="/tools/Autopost/{{post.page - 1}}"><<</a> | <a href="/tools/Autopost/{{post.page + 1}}">>></a> Next Page
+      <a href="/tools/Autopost/{{post.page - 1}}"><<</a> Prev Page
     @endif
   </div>
 @endsection

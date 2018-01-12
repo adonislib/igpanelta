@@ -18,7 +18,7 @@
   <h2 style="font-size: 15px">Instagram Personal Panel</h2>
   @loggedIn
     Hellow {{auth.user.username}}, Welcome back !<br />
-    <a href="/">Home</a> | <a href="{{route('Logout')}}" title="Logout">Logout</a>
+    <a href="/">Home</a> | <a href="{{route('Auth', {params:'logout'})}}" title="Logout">Logout</a>
   @endloggedIn
 </div>
 

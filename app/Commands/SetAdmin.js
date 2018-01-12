@@ -13,19 +13,21 @@ class SetAdmin extends Command {
   }
 
   async handle (args, options) {
+
+    this.info(`Set Admin`)
     const user = new User()
-    user.username = '' // INSERT YOUR USERNAME
-    user.email = '' // INSERT YOUR EMAIL
-    user.password = '' // INSERT YOUR USERNAME
+
+    user.username = await this.ask('Username:'); // INSERT YOUR USERNAME
+    user.email = await this.ask('Email address:'); // INSERT YOUR EMAIL
+    user.password = await this.secure('Password:'); // INSERT YOUR PASSWORD
+
     try {
       await user.save()
-      this.info(`Admin Created !`)
-      this.info(`Username: ${user.username} !`)
-      this.info(`Email: ${user.email}`)
-      this.info(`Password: ${user.password} !`)
+      this.completed('set:admin', `Created Admin ${user.username} row successfuly!`);
     } catch(e) {
       this.warn(e)
     }
+    return;
   }
 }
 

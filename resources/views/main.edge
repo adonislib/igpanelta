@@ -4,7 +4,7 @@
 
   <div id="account-ig-form" >
     <h6 style="margin-bottom: 5px;">Add Instagram account</h6>
-    <form method="post" action="{{route('addAccount')}}">
+    <form method="post" action="{{route('Instagram', {params:'add'})}}">
       {{csrfField()}}
       <input type="text" name="username" placeholder="Username" required>
       <input type="password" name="password" placeholder="Password" required>
@@ -20,7 +20,7 @@
 
   <div id="instagram-tools" style="margin-bottom: 15px;">
     <h6 style="margin-bottom: 5px;">Instagram Tools List</h6>
-    [-] <a href="{{route('AutopostIndex')}}">Autopost</a><br />
+    [-] <a href="{{route('Autopost')}}">Autopost</a><br />
     [-] <a href="#none">Unffolow not followback</a><br />
     [-] <a href="#none">Unfollow all following</a><br />
     [-] <a href="#none">Delete all media</a><br />
@@ -37,17 +37,17 @@
           <b><font color="red">ERR</font></b>
         @endif
         ]
-        <form method="post" action="{{route('deleteAccount')}}" style="display: inline;" id="delete-account-{{account.id}}">
+        <form method="post" action="{{route('Instagram', {params:'delete'})}}" style="display: inline;" id="delete-account-{{account.id}}">
           {{csrfField()}}
           <input type="hidden" name="id" value="{{account.id}}">
           [<a href="javascript:{}" onclick="document.getElementById('delete-account-{{account.id}}').submit(); return false;">DELETE</a>]
         </form>
-        <form method="post" action="{{route('checkAccount')}}" style="display: inline;" id="check-account-{{account.id}}">{{csrfField()}}
+        <form method="post" action="{{route('Instagram', {params:'check'})}}" style="display: inline;" id="check-account-{{account.id}}">{{csrfField()}}
           <input type="hidden" name="id" value="{{account.id}}">
           [<a href="javascript:{}" onclick="document.getElementById('check-account-{{account.id}}').submit(); return false;">CHECK</a>]
         </form>
         [<a href="javascript:{}" onclick="bukaPassword('{{account.id}}')">EDIT PASSWORD</a>]
-        <form style="display: none;margin-bottom: -7px" action="{{route('editAccount')}}" method="post" id="edit-account-{{account.id}}">
+        <form style="display: none;margin-bottom: -7px" action="{{route('Instagram', {params:'edit'})}}" method="post" id="edit-account-{{account.id}}">
           {{csrfField()}}
           <input type="hidden" name="id" value="{{account.id}}" />
           <input type="text" name="password">

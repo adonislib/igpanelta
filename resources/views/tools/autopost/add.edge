@@ -3,7 +3,7 @@
 @section('content')
   <p><a href="/tools/Autopost/""><< BACK</a></p>
   <p style="color:red">Gambar hanya support JPG</p>
-  <form method="post" action="{{route('AutopostAdd')}}" enctype="multipart/form-data">
+  <form method="post" action="{{route('Autopost', {params:'add'})}}" enctype="multipart/form-data">
     {{csrfField()}}
     <div>
       <label>File Gambar</label>

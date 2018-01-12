@@ -6,11 +6,11 @@ class AutopostSchema extends Schema {
   up () {
     this.create('autoposts', (table) => {
       table.increments()
-      table.integer('account_id').unsigned().references('id').inTable('account_igs')
+      table.integer('account_id').unsigned().references('id').inTable('account_igs').notNullable()
       table.text('caption').notNullable()
       table.text('image').notNullable()
-      table.timestamp('publish_time').notNullable()
-      table.boolean('is_published').defaultTo(false)
+      table.dateTime('publish_time').notNullable()
+      table.boolean('is_published').defaultTo(false).notNullable()
       table.timestamps()
     })
   }

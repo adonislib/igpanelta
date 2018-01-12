@@ -28,13 +28,6 @@ cd Instagram-personal-panel
 npm install
 ```
 
-Edit app/Commands/SetAdmin.js For Admin Login
-```javascript
-user.username = 'ccocot' // INSERT YOUR USERNAME
-user.email = 'ccocot@bc0de.net' // INSERT YOUR EMAIL
-user.password = 'ccocot123' // INSERT YOUR USERNAME
-
-```
 Setting mysql in .env
 ```
 DB_CONNECTION=mysql
@@ -49,11 +42,6 @@ Run Migration and create Admin
 ```bash
 adonis run:migration
 adonis set:admin
-```
-
-set env to production in .env
-```
-NODE_ENV=production
 ```
 
 And run the server
